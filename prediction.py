@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 df = pd.read_csv('troop_movements.csv')
 
 # Empire or Resistance Dataframe Creation
@@ -17,5 +18,18 @@ for index, row in df.iterrows():
 # Add row to DataFrame (stuff after the = sign is the important part)
 empireOrResistanceDf.loc[len(empireOrResistanceDf)] = ["empire", empireCount]
 empireOrResistanceDf.loc[len(empireOrResistanceDf)] = ["resistance", resistanceCount]
-
 print(empireOrResistanceDf)
+
+# Unit dataframe stuff
+unit_counts = df['unit_type'].value_counts()
+unitTypeDf = unit_counts.to_frame()
+unitTypeDf.columns = ['count'] 
+unitTypeDf = unitTypeDf.reset_index() 
+unitTypeDf = unitTypeDf.rename(columns={'index': 'unit type'})
+
+
+
+print(unitTypeDf)
+
+
+
