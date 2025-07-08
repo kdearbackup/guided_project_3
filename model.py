@@ -8,11 +8,11 @@ df = pd.read_csv('troop_movements.csv')
 
 # Select features and target variable
 features = df[['homeworld','unit_type']]
-target = df[['empire_or_resistance']]
+target = df['empire_or_resistance']
 
 #encode categorical features
-label_encoder = LabelEncoder()
-features_encoded = features.apply(label_encoder.fit_transform)
+
+features_encoded = pd.get_dummies(features)
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(features_encoded, target, test_size=0.2, random_state=42)
@@ -33,3 +33,6 @@ report = classification_report(y_test,y_pred)
 print(f'Accuracy: {accuracy}')
 print('Classification Report: ')
 print(report)
+
+exported_model = model
+exported_features_encoded = features_encoded
