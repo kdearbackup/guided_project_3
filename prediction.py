@@ -7,6 +7,11 @@ empireOrResistanceDf = pd.DataFrame({"empire_or_resistance": [], "count": []})
 empireCount = 0
 resistanceCount = 0
 
+#group by 'homeworld' and count occurances
+homeworld_counts = df.groupby('homeworld').size().reset_index(name='count')
+#Print grouping
+print(homeworld_counts)
+
 # Iterate through rows in Dataframe
 for index, row in df.iterrows():
     if row['empire_or_resistance'] == 'empire':
