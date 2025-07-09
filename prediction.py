@@ -42,6 +42,8 @@ unitTypeDf = unitTypeDf.rename(columns={'index': 'unit type'})
 # Adding is_resistance column to original dataframe
 df['is_resistance'] = is_resistance_list
 
+print(df)
+
 # Create a countplot
 sns.countplot(x='is_resistance', data=df)
 

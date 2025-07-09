@@ -6,9 +6,11 @@ from sklearn.metrics import accuracy_score, classification_report
 
 df = pd.read_csv('troop_movements.csv')
 
+df["is_resistance"] = df['empire_or_resistance'] == 'resistance'
+
 # Select features and target variable
 features = df[['homeworld','unit_type']]
-target = df['empire_or_resistance']
+target = df['is_resistance']
 
 #encode categorical features
 
